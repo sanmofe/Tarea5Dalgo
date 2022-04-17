@@ -29,12 +29,13 @@ public class Grafo {
     public ArrayList nodos(){ return nodos; }
 
     public void anhadirNodo(){
-        nodos.add(nodos.size()+1);
+        nodos.add(nodos.size());
         if(usaMatriz){
             redimensionarMatriz();
         }
         else{
-            listaAdj.put(nodos.size(), new LinkedList<>());
+            listaAdj.put(nodos.size()-1, new LinkedList<>());
+            //System.out.println("Nodo añadido: " + nodos.size());
         }
     }
 
@@ -49,6 +50,7 @@ public class Grafo {
     }
 
     public void anhadirVertice(int desde, int hacia, int peso){
+        //System.out.println("Añadiendo vértice, de " + desde + " a " + hacia + " con peso de " + peso);
         if(usaMatriz){
             matrizAdj[desde][hacia] = peso;
             matrizAdj[hacia][desde] = peso;
@@ -69,12 +71,12 @@ public class Grafo {
         if(usaMatriz){
             for (int i = 0; i < nodos.size(); i++) {
                 if(i<=nodo){
-                    if(matrizAdj[nodo-1][i] != 0){
-                        devuelveme.add(new Tupla<>(i,matrizAdj[nodo-1][i]));
+                    if(matrizAdj[nodo][i] != 0){
+                        devuelveme.add(new Tupla<>(i,matrizAdj[nodo][i]));
                     }
                 }else{
-                    if(matrizAdj[i][nodo-1] != 0){
-                        devuelveme.add(new Tupla<>(i,matrizAdj[i][nodo-1]));
+                    if(matrizAdj[i][nodo] != 0){
+                        devuelveme.add(new Tupla<>(i,matrizAdj[i][nodo]));
                     }
                 }
             }
