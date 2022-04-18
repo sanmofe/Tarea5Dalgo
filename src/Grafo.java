@@ -7,11 +7,13 @@ public class Grafo {
 
     private ArrayList<Integer> nodos;
 
-    private int[][] matrizAdj; //En la matriz, un número diferente a 0 representa que hay una adyacencia, y ese número
+    public int[][] matrizAdj; //En la matriz, un número diferente a 0 representa que hay una adyacencia, y ese número
     // es el peso del vértice
 
     private HashMap<Integer, List<Tupla<Integer, Integer>>> listaAdj; //En la lista, cada nodo tiene una lista de tuplas,
     // el objeto1 de la tupla representa el nodo hacia el cual va el vértice y el objeto2 representa el peso del vértice
+
+
 
     boolean usaMatriz;
 
@@ -42,11 +44,9 @@ public class Grafo {
     private void redimensionarMatriz() {
         int[][] nuevaMatriz = new int[nodos.size()][nodos.size()];
         for (int i = 0; i < matrizAdj.length; i++) {
-            for (int j = 0; j != matrizAdj.length; j++) {
-                //TODO vamos a duplicar la matriz entera o solo la mitad que vamos a usar? Haría mucha diferencia en complejidad?
-            }
             System.arraycopy(matrizAdj[i],0, nuevaMatriz[i],0,matrizAdj[i].length); //No tengo la menor idea de si esto funcione, si sí, este método es O(n)
         }
+        matrizAdj = nuevaMatriz;
     }
 
     public void anhadirVertice(int desde, int hacia, int peso){
@@ -86,6 +86,12 @@ public class Grafo {
         }
         return devuelveme;
     }
+
+    //public int[] darAristaMenorCosto(){
+
+
+
+    //}
 
     public class Tupla<K, V>{
 
