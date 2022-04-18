@@ -4,14 +4,11 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Kruskal {
-    //private PriorityQueue<String> namePriorityQueue = new PriorityQueue<>(stringTuple);
-/*    static int[] parent = new int[9];
-    static int[] rank = new int[9];*/
+
 
     static int a;
     static int b;
-    static int u;
-    static int v;
+
 
 
     public static void main(String[] args) {
@@ -61,7 +58,6 @@ public class Kruskal {
 
     public static ArrayList<String> algoritmoKruskal(Grafo g, PriorityQueue<String> namePriorityQueue) {
 
-        int minCost = 0;
 
         int aristasVis = 0;
 
@@ -76,30 +72,16 @@ public class Kruskal {
 
             String arista = namePriorityQueue.remove();
 
-                //aristasVisitadas.add(arista);
-                System.out.println(arista);
-                //nodosvisitados.add(Integer.parseInt(arista.split(",")[0]));
-                //nodosvisitados.add(Integer.parseInt(arista.split(",")[1]));
+
                 if(find(parent,Integer.parseInt(arista.split(",")[1])) != find(parent,Integer.parseInt(arista.split(",")[0]))) {
                     aristasVisitadas.add(arista);
                     union_set(parent, rank, Integer.parseInt(arista.split(",")[0]), Integer.parseInt(arista.split(",")[1]));
                 }
 
-                 //u = find(parent, Integer.parseInt(arista.split(",")[0]));
-                 //v = find(parent, Integer.parseInt(arista.split(",")[1]));
-
-                System.out.println(Integer.parseInt(arista.split(",")[0]));
-                //union1(u, v);
-                //union1(u, v);
-                System.out.println();
-            {
-                    System.out.println("" + aristasVis++ +" vertices: "+ a +","+ b +" costo= "+ Integer.parseInt(arista.split(",")[2]));
-                    //mincost +=min;
-                }
+                    aristasVis++;
 
 
-            System.out.println("" + g.darAdyacenciasDeNodo(3).get(1).objeto1 + g.darAdyacenciasDeNodo(3).get(1).objeto2);
-            System.out.println(Arrays.deepToString(g.matrizAdj));
+
         }
         return aristasVisitadas;
     }
